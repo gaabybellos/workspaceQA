@@ -1,0 +1,30 @@
+#:schema https://developers.openai.com/codex/config-schema.json
+
+project_doc_max_bytes = 65536
+developer_instructions = """
+In workspaceQA, preserve the runner-agnostic operational contract used by Claude and OpenCode.
+
+Rules:
+- Read AGENTS.md as the durable governance of this repository.
+- Treat .claude/agents/, .opencode/prompts/, and .codex/agents/ as the shared canonical set of agents.
+- Treat skills/discovery/SKILL.md as the shared discovery and reverse-engineering skill.
+- Treat skills/qa-env/SKILL.md as the shared environment skill outside the cycle.
+- Follow the official cycle: qa-cycle -> discovery -> test-planner -> test-generator -> test-runner -> [bug-auditor | test-healer].
+- Read docs/writing-standards.md before creating or modifying any file.
+- Never skip discovery.
+- Never add Playwright, Cypress, or runner-specific files to the workspace core.
+- Every generated test must reference its spec ID.
+- When modifying any agent in .codex/agents/, update .claude/agents/ and .opencode/prompts/ in the same change.
+"""
+
+[agents]
+max_threads = 6
+max_depth = 1
+
+[mcp_servers.filesystem]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-filesystem", "."]
+enabled = true
+required = false
+startup_timeout_sec = 10
+tool_timeout_sec = 30

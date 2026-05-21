@@ -1,0 +1,30 @@
+{
+  "name": "workspace-qa",
+  "version": "1.0.0",
+  "description": "Runner-agnostic QA workspace for project discovery, reverse engineering, and test planning with optional automation runners.",
+  "scripts": {
+    "init-workspace": "node scripts/setup.js",
+    "setup": "node scripts/setup.js",
+    "register-project": "node scripts/link-project.js",
+    "link-project": "node scripts/link-project.js",
+    "check-workspace": "node scripts/check-env.js",
+    "check-env": "node scripts/check-env.js",
+    "new-spec": "node scripts/new-test.js",
+    "report": "node scripts/report.js"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "keywords": [
+    "qa",
+    "reverse-engineering",
+    "test-planning",
+    "ai-agents",
+    "test-automation",
+    "claude",
+    "opencode",
+    "codex"
+  ],
+  "license": "MIT"
+}

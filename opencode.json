@@ -1,0 +1,55 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "claude-sonnet-4-5",
+  "mcp": {
+    "servers": {
+      "filesystem": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "."]
+      }
+    }
+  },
+  "agents": {
+    "qa-cycle": {
+      "mode": "subagent",
+      "prompt": { "file": ".opencode/prompts/qa-cycle.md" },
+      "tools": ["Glob", "Grep", "Read", "LS", "Edit", "MultiEdit", "Write", "Bash", "Agent"]
+    },
+    "discovery": {
+      "mode": "subagent",
+      "prompt": { "file": ".opencode/prompts/discovery.md" },
+      "tools": ["Glob", "Grep", "Read", "LS", "Write", "WebFetch", "WebSearch"]
+    },
+    "test-planner": {
+      "mode": "subagent",
+      "prompt": { "file": ".opencode/prompts/test-planner.md" },
+      "tools": ["Glob", "Grep", "Read", "LS", "Edit", "Write"]
+    },
+    "test-generator": {
+      "mode": "subagent",
+      "prompt": { "file": ".opencode/prompts/test-generator.md" },
+      "tools": ["Glob", "Grep", "Read", "LS", "Edit", "MultiEdit", "Write"]
+    },
+    "test-runner": {
+      "mode": "subagent",
+      "prompt": { "file": ".opencode/prompts/test-runner.md" },
+      "tools": ["Glob", "Grep", "Read", "LS", "Bash"]
+    },
+    "test-healer": {
+      "mode": "subagent",
+      "prompt": { "file": ".opencode/prompts/test-healer.md" },
+      "tools": ["Glob", "Grep", "Read", "LS", "Edit", "MultiEdit", "Write", "Bash"]
+    },
+    "bug-auditor": {
+      "mode": "subagent",
+      "prompt": { "file": ".opencode/prompts/bug-auditor.md" },
+      "tools": ["Glob", "Grep", "Read", "LS", "Bash"]
+    },
+    "sync-validator": {
+      "mode": "subagent",
+      "prompt": { "file": ".opencode/prompts/sync-validator.md" },
+      "tools": ["Glob", "Grep", "Read", "LS"]
+    }
+  }
+}

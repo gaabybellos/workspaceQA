@@ -1,0 +1,16 @@
+{
+  "name": "Project Display Name",
+  "slug": "project-slug",
+  "description": "One sentence describing what this project does.",
+  "project_type": "web",
+  "base_url": "http://localhost:3000",
+  "repo_url": null,
+  "branch": null,
+  "source_path": null,
+  "api_docs_url": null,
+  "automation": {
+    "runner": null,
+    "installed": false
+  },
+  "registered_at": ""
+}
