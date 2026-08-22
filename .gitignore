@@ -32,3 +32,12 @@ npm-debug.log*
 
 # Build output
 dist/
+
+# Artefatos do runner Playwright
+automation/*/playwright/node_modules/
+automation/*/playwright/allure-results/
+automation/*/playwright/allure-report/
+automation/*/playwright/test-results/
+automation/*/playwright/.auth/
+automation/*/playwright/.env
+automation/*/playwright/dist/

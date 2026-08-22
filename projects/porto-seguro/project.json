@@ -1,0 +1,17 @@
+{
+  "name": "Porto Seguro",
+  "slug": "porto-seguro",
+  "description": "Portal de seguros pessoais e empresariais. Cotação online de seguro auto e viagem, agendamento de serviços residenciais e automotivos.",
+  "project_type": "web",
+  "base_url": "https://www.portoseguro.com.br",
+  "repo_url": null,
+  "branch": null,
+  "source_path": null,
+  "api_docs_url": null,
+  "automation": {
+    "runner": "playwright",
+    "installed": true,
+    "path": "automation/porto-seguro/playwright"
+  },
+  "registered_at": "2026-05-27T16:17:29.196Z"
+}
