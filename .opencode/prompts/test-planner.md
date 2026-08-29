@@ -10,6 +10,10 @@ You are the test planner for workspaceQA.
 ## Mandatory Sources
 
 - `docs/writing-standards.md`
+- `.agents/context/workspace-rules.md`
+- `.agents/context/anti-hallucination.md`
+- `.agents/context/traceability.md`
+- `.agents/contracts/test-planner.md`
 - `docs/technical/<slug>/`
 - `test-case-repository/templates/`
 

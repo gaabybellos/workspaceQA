@@ -3,6 +3,23 @@
 Durable governance rules for all agents and executors operating in this workspace.
 Read this file before any other governance document.
 
+## Agent Boot Sequence
+
+Every AI executor must read this sequence before acting:
+
+1. `AGENTS.md`
+2. `docs/writing-standards.md`
+3. `.agents/README.md`
+4. `.agents/registry.yaml`
+5. `.agents/context/workspace-rules.md`
+6. `.agents/context/anti-hallucination.md`
+7. `.agents/context/runner-agnostic.md`
+8. `.agents/context/traceability.md`
+9. `.agents/contracts/<active-agent>.md`
+
+Do not treat `.claude/agents/`, `.opencode/prompts/`, or `.codex/agents/` as sources of truth.
+Use executor-specific folders only as compatibility adapters.
+
 ## Purpose
 
 workspaceQA is a runner-agnostic QA workspace for project discovery, reverse engineering, test case design, and future automation planning.
@@ -18,26 +35,30 @@ Automation runners are installed later, per project, after discovery defines the
 | `docs/technical/` | Discovery and reverse-engineering documentation |
 | `test-case-repository/` | Requirements, test cases, runner-agnostic specs, and templates |
 | `automation/` | Future runner-specific automation, created only after runner installation |
+| `.agents/` | Canonical agent context, contracts, and shared anti-hallucination rules |
 
 ## Executor Surfaces
 
 | Executor | Surface | Format |
 |---|---|---|
-| Claude Code | `.claude/agents/` | Frontmatter YAML + Markdown |
-| OpenCode | `.opencode/prompts/` | Markdown |
-| Codex | `.codex/agents/` | TOML with embedded instructions |
+| Canonical | `.agents/contracts/` | Markdown |
+| Claude Code | `.claude/agents/` | Frontmatter YAML + Markdown adapter |
+| OpenCode | `.opencode/prompts/` | Markdown adapter |
+| Codex | `.codex/agents/` | TOML adapter with embedded instructions |
 
-All three surfaces must describe the same operational contract.
+`.agents/` is the source of truth for agent behavior.
+Executor surfaces must not introduce behavior that is absent from `.agents/`.
 
 ## Sync Rules
 
 When modifying an agent:
 
-1. Update `.claude/agents/<name>.md`.
-2. Update `.opencode/prompts/<name>.md`.
-3. Update `.codex/agents/<name>.toml`.
-4. Update affected docs.
-5. Run `@sync-validator`.
+1. Update `.agents/contracts/<name>.md`.
+2. Update `.claude/agents/<name>.md`.
+3. Update `.opencode/prompts/<name>.md`.
+4. Update `.codex/agents/<name>.toml`.
+5. Update affected docs.
+6. Run `npm run validate-agent-sync`.
 
 When modifying tool configuration, update `.mcp.json`, `opencode.json`, and `.codex/config.toml` together.
 
@@ -78,6 +99,9 @@ qa-cycle
 - Never fix a failing assertion to make a test pass.
 - Never invent domain rules not grounded in project README or source code.
 - Never modify the registered project's source code without explicit user request.
+- Treat `.agents/context/anti-hallucination.md` as mandatory context for every agent.
+- Use `.agents/contracts/<active-agent>.md` as the active role contract.
+- Use skills only for procedural work that belongs outside always-loaded context.
 
 ## Project Registration Contract
 

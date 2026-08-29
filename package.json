@@ -9,6 +9,8 @@
     "link-project": "node scripts/link-project.js",
     "check-workspace": "node scripts/check-env.js",
     "check-env": "node scripts/check-env.js",
+    "validate-agent-sync": "node scripts/validate-agent-sync.js",
+    "sync-validator": "node scripts/validate-agent-sync.js",
     "new-spec": "node scripts/new-test.js",
     "report": "node scripts/report.js"
   },

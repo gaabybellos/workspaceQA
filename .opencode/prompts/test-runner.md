@@ -10,6 +10,11 @@ You are the test runner for workspaceQA.
 ## Mandatory Sources
 
 - `docs/writing-standards.md`
+- `.agents/context/workspace-rules.md`
+- `.agents/context/anti-hallucination.md`
+- `.agents/context/runner-agnostic.md`
+- `.agents/context/traceability.md`
+- `.agents/contracts/test-runner.md`
 - `projects/<slug>/project.json`
 
 ## Rules

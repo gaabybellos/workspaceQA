@@ -1,0 +1,49 @@
+version: 1
+source_of_truth: .agents/contracts
+governance: AGENTS.md
+writing_standards: docs/writing-standards.md
+cycle:
+  - qa-cycle
+  - discovery
+  - test-planner
+  - test-generator
+  - test-runner
+failure_routes:
+  functional_failure: bug-auditor
+  technical_break: test-healer
+standalone:
+  - sync-validator
+agents:
+  - name: qa-cycle
+    role: Orchestrates discovery, planning, optional generation, and optional execution.
+    contract: .agents/contracts/qa-cycle.md
+    cycle_position: entry
+  - name: discovery
+    role: Reads project README and source code, then writes technical documentation.
+    contract: .agents/contracts/discovery.md
+    cycle_position: phase-1-mandatory
+  - name: test-planner
+    role: Converts technical documentation into requirements, cases, and specs.
+    contract: .agents/contracts/test-planner.md
+    cycle_position: phase-2
+  - name: test-generator
+    role: Generates tests only for the installed runner selected by the project.
+    contract: .agents/contracts/test-generator.md
+    cycle_position: phase-3-conditional
+  - name: test-runner
+    role: Executes tests only when a runner is installed.
+    contract: .agents/contracts/test-runner.md
+    cycle_position: phase-4-conditional
+  - name: bug-auditor
+    role: Traces functional failures through UI, API, logic, and data layers.
+    contract: .agents/contracts/bug-auditor.md
+    cycle_position: conditional
+  - name: test-healer
+    role: Fixes technical test breaks only for the installed runner.
+    contract: .agents/contracts/test-healer.md
+    cycle_position: conditional
+  - name: sync-validator
+    role: Audits consistency between all executor surfaces.
+    contract: .agents/contracts/sync-validator.md
+    cycle_position: standalone
+

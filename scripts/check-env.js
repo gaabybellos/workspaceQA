@@ -52,6 +52,12 @@ try {
 for (const file of [
   'AGENTS.md',
   'docs/writing-standards.md',
+  '.agents/README.md',
+  '.agents/registry.yaml',
+  '.agents/context/workspace-rules.md',
+  '.agents/context/anti-hallucination.md',
+  '.agents/context/runner-agnostic.md',
+  '.agents/context/traceability.md',
   'skills/discovery/SKILL.md',
   'skills/qa-env/SKILL.md',
   'test-case-repository/README.md',
@@ -59,7 +65,7 @@ for (const file of [
   existsSync(join(ROOT, file)) ? pass(file) : fail(`${file} missing`);
 }
 
-for (const dir of ['.claude/agents', '.opencode/prompts', '.codex/agents', 'projects', 'docs/technical', 'test-case-repository']) {
+for (const dir of ['.agents/contracts', '.claude/agents', '.opencode/prompts', '.codex/agents', 'projects', 'docs/technical', 'test-case-repository']) {
   existsSync(join(ROOT, dir)) ? pass(dir) : fail(`${dir} missing`);
 }
 

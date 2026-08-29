@@ -6,7 +6,8 @@ In workspaceQA, preserve the runner-agnostic operational contract used by Claude
 
 Rules:
 - Read AGENTS.md as the durable governance of this repository.
-- Treat .claude/agents/, .opencode/prompts/, and .codex/agents/ as the shared canonical set of agents.
+- Treat .agents/ as the shared canonical agent context.
+- Treat .claude/agents/, .opencode/prompts/, and .codex/agents/ as executor-specific adapters.
 - Treat skills/discovery/SKILL.md as the shared discovery and reverse-engineering skill.
 - Treat skills/qa-env/SKILL.md as the shared environment skill outside the cycle.
 - Follow the official cycle: qa-cycle -> discovery -> test-planner -> test-generator -> test-runner -> [bug-auditor | test-healer].
@@ -14,7 +15,7 @@ Rules:
 - Never skip discovery.
 - Never add Playwright, Cypress, or runner-specific files to the workspace core.
 - Every generated test must reference its spec ID.
-- When modifying any agent in .codex/agents/, update .claude/agents/ and .opencode/prompts/ in the same change.
+- When modifying any agent, update .agents/contracts/, .claude/agents/, .opencode/prompts/, and .codex/agents/ in the same change.
 """
 
 [agents]

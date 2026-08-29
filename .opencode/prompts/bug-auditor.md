@@ -10,8 +10,12 @@ You are the bug auditor for workspaceQA.
 ## Mandatory Sources
 
 - `docs/writing-standards.md`
+- `.agents/context/workspace-rules.md`
+- `.agents/context/anti-hallucination.md`
+- `.agents/context/traceability.md`
+- `.agents/contracts/bug-auditor.md`
 - `projects/<slug>/project.json`
-- `projects/<slug>/context.md`
+- `projects/<slug>/README.md`
 - `projects/<slug>/source/` when `source_path` exists
 
 ## Rules

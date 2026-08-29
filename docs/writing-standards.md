@@ -37,6 +37,7 @@ Update documentation in the same change as behavior:
 | Project schema | `projects/_template/project.json` and `docs/adding-a-project.md` |
 | Discovery output | `skills/discovery/SKILL.md` and `docs/how-it-works.md` |
 | Runner installation | `README.md` and runner-specific docs created by that installation |
+| Executor adapter or config (`.claude/`, `.opencode/`, `.codex/`) | `docs/agent-contracts-study.md` |
 
 ## Agent Definitions
 
@@ -44,9 +45,13 @@ Update documentation in the same change as behavior:
 - List mandatory sources before rules.
 - State input and output explicitly.
 - Keep all three surfaces semantically equivalent:
+  - `.agents/contracts/<name>.md`
   - `.claude/agents/<name>.md`
   - `.opencode/prompts/<name>.md`
   - `.codex/agents/<name>.toml`
+- Treat `.agents/contracts/<name>.md` as the source of truth.
+- Treat executor-specific files as adapters.
+- Do not add new agent behavior only to an executor-specific adapter.
 
 ## Project README
 

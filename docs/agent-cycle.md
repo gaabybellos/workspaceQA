@@ -3,11 +3,29 @@
 ## Overview
 
 ```text
-qa-cycle -> discovery -> test-planner -> test-generator -> test-runner
+qa-cycle -> discovery -> test-planner -> test-generator -> test-runner -> [bug-auditor | test-healer]
 ```
 
 `test-generator` and `test-runner` are conditional.
 They require a runner installed for the project.
+
+## Canonical Agent Context
+
+`AGENTS.md` is the durable governance file.
+`.agents/` is the canonical context for agent behavior.
+
+Read sources in this order:
+
+1. `AGENTS.md`
+2. `docs/writing-standards.md`
+3. `.agents/registry.yaml`
+4. `.agents/context/*.md`
+5. `.agents/contracts/<agent>.md`
+
+Read executor-specific adapters only when the active tool requires them.
+
+Executor-specific files in `.claude/agents/`, `.opencode/prompts/`, and `.codex/agents/` are compatibility adapters.
+They must not introduce behavior outside `.agents/contracts/`.
 
 ## Phase 1 - discovery
 

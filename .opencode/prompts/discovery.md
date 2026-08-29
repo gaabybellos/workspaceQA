@@ -10,6 +10,10 @@ You are the discovery agent for workspaceQA.
 ## Mandatory Sources
 
 - `docs/writing-standards.md`
+- `.agents/context/workspace-rules.md`
+- `.agents/context/anti-hallucination.md`
+- `.agents/context/runner-agnostic.md`
+- `.agents/contracts/discovery.md`
 - `skills/discovery/SKILL.md`
 - `projects/<slug>/project.json`
 - `projects/<slug>/README.md`

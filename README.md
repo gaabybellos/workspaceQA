@@ -77,6 +77,7 @@ workspaceQA/
     templates/               reusable requirement, case, and spec templates
   scripts/                   Node.js CLI tooling
   skills/                    reusable agent instructions
+  .agents/                   canonical agent contracts and shared context
   .claude/agents/            Claude Code agent definitions
   .opencode/prompts/         OpenCode prompt definitions
   .codex/agents/             Codex TOML agent definitions
@@ -99,6 +100,7 @@ workspaceQA/
 | `automation/` | Reserved for future runner-specific automation after runner installation. |
 | `scripts/` | Stores workspace CLI commands. |
 | `skills/` | Stores reusable instructions used by agents. |
+| `.agents/` | Stores canonical agent contracts, shared context, and anti-hallucination rules. |
 
 `projects/` is intentionally clean. It must not contain test cases, specs, runner configs, or automation code.
 
@@ -334,21 +336,27 @@ Key rules:
 
 ## Multi-Surface Sync
 
-The same operational contract is maintained across three executor surfaces:
+The same operational contract is maintained across one canonical context and three executor surfaces:
 
 | Executor | Directory | Format |
 | --- | --- | --- |
-| Claude Code | `.claude/agents/` | Frontmatter YAML + Markdown |
-| OpenCode | `.opencode/prompts/` | Markdown |
-| Codex | `.codex/agents/` | TOML with embedded instructions |
+| Canonical | `.agents/contracts/` | Markdown |
+| Claude Code | `.claude/agents/` | Frontmatter YAML + Markdown adapter |
+| OpenCode | `.opencode/prompts/` | Markdown adapter |
+| Codex | `.codex/agents/` | TOML adapter with embedded instructions |
+
+`AGENTS.md` is the durable governance file.
+`.agents/` is the canonical source for agent behavior.
+Executor-specific folders adapt that behavior to each tool.
 
 When modifying an agent:
 
-1. Update `.claude/agents/<name>.md`.
-2. Update `.opencode/prompts/<name>.md`.
-3. Update `.codex/agents/<name>.toml`.
-4. Update affected docs.
-5. Run `@sync-validator`.
+1. Update `.agents/contracts/<name>.md`.
+2. Update `.claude/agents/<name>.md`.
+3. Update `.opencode/prompts/<name>.md`.
+4. Update `.codex/agents/<name>.toml`.
+5. Update affected docs.
+6. Run `npm run validate-agent-sync`.
 
 When modifying tool configuration, update these files together:
 
@@ -452,6 +460,7 @@ Requirement -> Test Case -> Spec -> Optional Automated Test -> Runner Report
 | `npm run init-workspace` | `npm run setup` | Validate Node/npm and create core folders. |
 | `npm run register-project` | `npm run link-project` | Register a project, create metadata, and optionally clone a Git repo. |
 | `npm run check-workspace` | `npm run check-env` | Validate workspace structure, agent folders, projects, source paths, and optional env values. |
+| `npm run validate-agent-sync` | `npm run sync-validator` | Validate canonical agent context, executor adapters, runner boundaries, and TC ID coverage. |
 | `npm run new-spec` | none | Create a runner-agnostic spec scaffold under `test-case-repository/repository/<slug>/specs/`. |
 | `npm run report` | none | Explain that reporting is runner-specific until automation exists. |
 
@@ -515,6 +524,8 @@ Important supporting docs:
 - `docs/how-it-works.md`
 - `docs/adding-a-project.md`
 - `docs/agent-cycle.md`
+- `docs/agent-consolidation-study.md`
+- `docs/agent-best-practices.md`
 - `docs/writing-standards.md`
 - `test-case-repository/README.md`
 

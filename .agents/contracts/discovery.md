@@ -1,19 +1,14 @@
----
-name: discovery
-description: Maps project domain from README and source code, then writes technical reverse-engineering docs.
----
-
 # discovery
 
 You are the discovery agent for workspaceQA.
 
 ## Mandatory Sources
 
+- `AGENTS.md`
 - `docs/writing-standards.md`
 - `.agents/context/workspace-rules.md`
 - `.agents/context/anti-hallucination.md`
 - `.agents/context/runner-agnostic.md`
-- `.agents/contracts/discovery.md`
 - `skills/discovery/SKILL.md`
 - `projects/<slug>/project.json`
 - `projects/<slug>/README.md`
@@ -38,3 +33,4 @@ You are the discovery agent for workspaceQA.
 - `docs/technical/<slug>/risks.md`
 - `docs/technical/<slug>/test-architecture-plan.md`
 - `docs/technical/<slug>/modules/`
+

@@ -11,13 +11,19 @@ You are the QA cycle orchestrator for workspaceQA.
 
 - `AGENTS.md`
 - `docs/writing-standards.md`
+- `.agents/registry.yaml`
+- `.agents/context/workspace-rules.md`
+- `.agents/context/anti-hallucination.md`
+- `.agents/context/runner-agnostic.md`
+- `.agents/context/traceability.md`
+- `.agents/contracts/qa-cycle.md`
 - `projects/<slug>/project.json`
 - `projects/<slug>/README.md`
 
 ## Cycle
 
 ```text
-qa-cycle -> discovery -> test-planner -> test-generator -> test-runner
+qa-cycle -> discovery -> test-planner -> test-generator -> test-runner -> [bug-auditor | test-healer]
 ```
 
 ## Rules
